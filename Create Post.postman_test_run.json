@@ -1,0 +1,478 @@
+{
+	"id": "26aaf39b-ee30-477c-8a6e-f726be668621",
+	"name": "Create Post",
+	"timestamp": "2023-05-15T06:45:59.965Z",
+	"collection_id": "27385366-30b01742-428c-4c01-b8c6-9792549d38f6",
+	"folder_id": 0,
+	"environment_id": "27385366-ae3c57d3-72f4-4546-a3d4-c47df16a72c0",
+	"totalPass": 14,
+	"delay": 0,
+	"persist": true,
+	"status": "finished",
+	"startedAt": "2023-05-15T06:45:53.608Z",
+	"totalFail": 0,
+	"results": [
+		{
+			"id": "5a81ccde-4bc4-4421-b884-b3a3b487040b",
+			"name": "Auth (Авторизация в тестового пользователя)",
+			"url": "https://test-stand.gb.ru/gateway/login",
+			"time": 908,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				908
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "ebaad10f-fd54-4201-91ab-bb8a6e295dda",
+			"name": "Create post",
+			"url": "https://test-stand.gb.ru/gateway/posts",
+			"time": 330,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				330
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "93b6e0b4-080e-489a-9c52-4af2dcfaf12c",
+			"name": "Create post - Title > 40",
+			"url": "https://test-stand.gb.ru/gateway/posts",
+			"time": 277,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				277
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "85c45943-6ac0-4631-bb6e-36390f918951",
+			"name": "Create post - Title empty value",
+			"url": "https://test-stand.gb.ru/gateway/posts",
+			"time": 231,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				231
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "10630cd7-41cc-4dc2-b7fe-ea99ba48ea4f",
+			"name": "Create post - Description > 100",
+			"url": "https://test-stand.gb.ru/gateway/posts",
+			"time": 243,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				243
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "446b617a-950a-4745-942b-561294049621",
+			"name": "Create post - Description empty",
+			"url": "https://test-stand.gb.ru/gateway/posts",
+			"time": 250,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				250
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "bfe6767b-5480-4d4f-833b-03f5842c9ab1",
+			"name": "Create post - Content > 1000",
+			"url": "https://test-stand.gb.ru/gateway/posts",
+			"time": 256,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				256
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "d0677dd9-4273-4dc6-a2a8-1268f3360d39",
+			"name": "Create post - Content empty",
+			"url": "https://test-stand.gb.ru/gateway/posts",
+			"time": 272,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				272
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "1cd9d651-90b6-4345-9d48-2feefcda0e50",
+			"name": "Create post - isDraft - 1 (отложен)",
+			"url": "https://test-stand.gb.ru/gateway/posts",
+			"time": 313,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				313
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "08ec5630-ff75-44db-85dd-5c5029c25bf3",
+			"name": "Create post - isDraft - Delay post to < current date",
+			"url": "https://test-stand.gb.ru/gateway/posts",
+			"time": 300,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				300
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "3137fb43-9308-46de-aa44-bcc0227ca68b",
+			"name": "Create post - isDraft - Delay post to = current date Copy",
+			"url": "https://test-stand.gb.ru/gateway/posts",
+			"time": 315,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				315
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "63ad3bc7-53c9-4059-a08f-a35b22f07b23",
+			"name": "Create post - isDraft - New image other format",
+			"url": "https://test-stand.gb.ru/gateway/posts",
+			"time": 294,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				294
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "30fcbe67-0ac6-4bf1-a039-c18ebd29f25a",
+			"name": "Create post - isDraft - New image size > 2 mb",
+			"url": "https://test-stand.gb.ru/gateway/posts",
+			"time": 299,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				299
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "27506b28-09ac-43df-9bbf-fab11279d0f4",
+			"name": "Create post - isDraft - New image no picture",
+			"url": "https://test-stand.gb.ru/gateway/posts",
+			"time": 329,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				329
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "0d5eb322-a1c0-4092-91d2-deb77b5547bb",
+			"name": "Create post - isDraft - post all empty",
+			"url": "https://test-stand.gb.ru/gateway/posts",
+			"time": 297,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				297
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		}
+	],
+	"count": 1,
+	"totalTime": 4914,
+	"collection": {
+		"requests": [
+			{
+				"id": "5a81ccde-4bc4-4421-b884-b3a3b487040b",
+				"method": "POST"
+			},
+			{
+				"id": "ebaad10f-fd54-4201-91ab-bb8a6e295dda",
+				"method": "POST"
+			},
+			{
+				"id": "93b6e0b4-080e-489a-9c52-4af2dcfaf12c",
+				"method": "POST"
+			},
+			{
+				"id": "85c45943-6ac0-4631-bb6e-36390f918951",
+				"method": "POST"
+			},
+			{
+				"id": "10630cd7-41cc-4dc2-b7fe-ea99ba48ea4f",
+				"method": "POST"
+			},
+			{
+				"id": "446b617a-950a-4745-942b-561294049621",
+				"method": "POST"
+			},
+			{
+				"id": "bfe6767b-5480-4d4f-833b-03f5842c9ab1",
+				"method": "POST"
+			},
+			{
+				"id": "d0677dd9-4273-4dc6-a2a8-1268f3360d39",
+				"method": "POST"
+			},
+			{
+				"id": "1cd9d651-90b6-4345-9d48-2feefcda0e50",
+				"method": "POST"
+			},
+			{
+				"id": "08ec5630-ff75-44db-85dd-5c5029c25bf3",
+				"method": "POST"
+			},
+			{
+				"id": "3137fb43-9308-46de-aa44-bcc0227ca68b",
+				"method": "POST"
+			},
+			{
+				"id": "63ad3bc7-53c9-4059-a08f-a35b22f07b23",
+				"method": "POST"
+			},
+			{
+				"id": "30fcbe67-0ac6-4bf1-a039-c18ebd29f25a",
+				"method": "POST"
+			},
+			{
+				"id": "27506b28-09ac-43df-9bbf-fab11279d0f4",
+				"method": "POST"
+			},
+			{
+				"id": "0d5eb322-a1c0-4092-91d2-deb77b5547bb",
+				"method": "POST"
+			}
+		]
+	}
+}
