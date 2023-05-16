@@ -1,0 +1,1115 @@
+{
+	"info": {
+		"_postman_id": "28bce306-cb32-43c9-a035-0a27a663b59b",
+		"name": "DZ_3_API_Get feed",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "27385366"
+	},
+	"item": [
+		{
+			"name": "Auth Copy",
+			"item": [
+				{
+					"name": "Auth (Авторизация в тестового пользователя)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = pm.response.json();\r",
+									"pm.collectionVariables.set(\"token\", jsonData.token);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "username",
+									"value": "AlenkaAlenkina11",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "fa3a83400c",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://test-stand.gb.ru/gateway/login",
+							"protocol": "https",
+							"host": [
+								"test-stand",
+								"gb",
+								"ru"
+							],
+							"path": [
+								"gateway",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Get user feed (Получение страницы авторизованного юзера)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-Auth-Token",
+						"value": "{{token}}",
+						"type": "text"
+					},
+					{
+						"key": "user_id",
+						"value": "10918",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://test-stand.gb.ru/api/users/profile/10918",
+					"protocol": "https",
+					"host": [
+						"test-stand",
+						"gb",
+						"ru"
+					],
+					"path": [
+						"api",
+						"users",
+						"profile",
+						"10918"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get unauthorized user feed (Получение страницы не авторизованного юзера)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-Auth-Token",
+						"value": "",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://test-stand.gb.ru/api/users/profile/",
+					"protocol": "https",
+					"host": [
+						"test-stand",
+						"gb",
+						"ru"
+					],
+					"path": [
+						"api",
+						"users",
+						"profile",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get stranger user feed (Получение страницы чужого юзера)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-Auth-Token",
+						"value": "bf557e1677d2ab57ff1c434f6d502fa8",
+						"type": "text"
+					},
+					{
+						"key": "",
+						"value": "",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "https://test-stand.gb.ru/api/users/profile/9599",
+					"protocol": "https",
+					"host": [
+						"test-stand",
+						"gb",
+						"ru"
+					],
+					"path": [
+						"api",
+						"users",
+						"profile",
+						"9599"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Editing user feed - image",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "X-Auth-Token",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "image",
+							"type": "file",
+							"src": "/C:/Users/Яхина Н А/Downloads/Снимок экрана 2023-04-12 143544.jpg"
+						},
+						{
+							"key": "firstName",
+							"value": "Alenka",
+							"type": "text"
+						},
+						{
+							"key": "lastName",
+							"value": "Alenkina11",
+							"type": "text"
+						},
+						{
+							"key": "username",
+							"value": "AlenkaAlenkina11",
+							"type": "text"
+						},
+						{
+							"key": "phone",
+							"value": "89512236645",
+							"type": "text"
+						},
+						{
+							"key": "sex",
+							"value": "female",
+							"type": "text"
+						},
+						{
+							"key": "birthDate",
+							"value": "2001-01-01",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://test-stand.gb.ru/gateway/users/profile/10918",
+					"protocol": "https",
+					"host": [
+						"test-stand",
+						"gb",
+						"ru"
+					],
+					"path": [
+						"gateway",
+						"users",
+						"profile",
+						"10918"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Editing user feed - firstName",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "X-Auth-Token",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "image",
+							"type": "file",
+							"src": "/C:/Users/Яхина Н А/Downloads/Снимок экрана 2023-04-12 143544.jpg"
+						},
+						{
+							"key": "firstName",
+							"value": "Vano",
+							"type": "text"
+						},
+						{
+							"key": "lastName",
+							"value": "Alenkina11",
+							"type": "text"
+						},
+						{
+							"key": "username",
+							"value": "AlenkaAlenkina11",
+							"type": "text"
+						},
+						{
+							"key": "phone",
+							"value": "89512236645",
+							"type": "text"
+						},
+						{
+							"key": "sex",
+							"value": "female",
+							"type": "text"
+						},
+						{
+							"key": "birthDate",
+							"value": "2001-01-01",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://test-stand.gb.ru/gateway/users/profile/10918",
+					"protocol": "https",
+					"host": [
+						"test-stand",
+						"gb",
+						"ru"
+					],
+					"path": [
+						"gateway",
+						"users",
+						"profile",
+						"10918"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Editing user feed - lastName",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "X-Auth-Token",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "image",
+							"type": "file",
+							"src": "/C:/Users/Яхина Н А/Downloads/Снимок экрана 2023-04-12 143544.jpg"
+						},
+						{
+							"key": "firstName",
+							"value": "Vano",
+							"type": "text"
+						},
+						{
+							"key": "lastName",
+							"value": "Ivano",
+							"type": "text"
+						},
+						{
+							"key": "username",
+							"value": "AlenkaAlenkina11",
+							"type": "text"
+						},
+						{
+							"key": "phone",
+							"value": "89512236645",
+							"type": "text"
+						},
+						{
+							"key": "sex",
+							"value": "female",
+							"type": "text"
+						},
+						{
+							"key": "birthDate",
+							"value": "2001-01-01",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://test-stand.gb.ru/gateway/users/profile/10918",
+					"protocol": "https",
+					"host": [
+						"test-stand",
+						"gb",
+						"ru"
+					],
+					"path": [
+						"gateway",
+						"users",
+						"profile",
+						"10918"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Editing user feed - username",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "X-Auth-Token",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "image",
+							"type": "file",
+							"src": "/C:/Users/Яхина Н А/Downloads/Снимок экрана 2023-04-12 143544.jpg"
+						},
+						{
+							"key": "firstName",
+							"value": "Vano",
+							"type": "text"
+						},
+						{
+							"key": "lastName",
+							"value": "Ivano",
+							"type": "text"
+						},
+						{
+							"key": "username",
+							"value": "VanoIvano",
+							"type": "text"
+						},
+						{
+							"key": "phone",
+							"value": "89512236646",
+							"type": "text"
+						},
+						{
+							"key": "sex",
+							"value": "male",
+							"type": "text"
+						},
+						{
+							"key": "birthDate",
+							"value": "2001-01-02",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://test-stand.gb.ru/gateway/users/profile/10918",
+					"protocol": "https",
+					"host": [
+						"test-stand",
+						"gb",
+						"ru"
+					],
+					"path": [
+						"gateway",
+						"users",
+						"profile",
+						"10918"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Editing user feed - phone",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "X-Auth-Token",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "image",
+							"type": "file",
+							"src": "/C:/Users/Яхина Н А/Downloads/Снимок экрана 2023-04-12 143544.jpg"
+						},
+						{
+							"key": "firstName",
+							"value": "Vano",
+							"type": "text"
+						},
+						{
+							"key": "lastName",
+							"value": "Ivano",
+							"type": "text"
+						},
+						{
+							"key": "username",
+							"value": "VanoIvano",
+							"type": "text"
+						},
+						{
+							"key": "phone",
+							"value": "89042140911",
+							"type": "text"
+						},
+						{
+							"key": "sex",
+							"value": "male",
+							"type": "text"
+						},
+						{
+							"key": "birthDate",
+							"value": "2001-01-02",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://test-stand.gb.ru/gateway/users/profile/10918",
+					"protocol": "https",
+					"host": [
+						"test-stand",
+						"gb",
+						"ru"
+					],
+					"path": [
+						"gateway",
+						"users",
+						"profile",
+						"10918"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Editing user feed - sex",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "X-Auth-Token",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "image",
+							"type": "file",
+							"src": "/C:/Users/Яхина Н А/Downloads/Снимок экрана 2023-04-12 143544.jpg"
+						},
+						{
+							"key": "firstName",
+							"value": "Vano",
+							"type": "text"
+						},
+						{
+							"key": "lastName",
+							"value": "Ivano",
+							"type": "text"
+						},
+						{
+							"key": "username",
+							"value": "VanoIvano",
+							"type": "text"
+						},
+						{
+							"key": "phone",
+							"value": "89042140911",
+							"type": "text"
+						},
+						{
+							"key": "sex",
+							"value": "male",
+							"type": "text"
+						},
+						{
+							"key": "birthDate",
+							"value": "2001-01-02",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://test-stand.gb.ru/gateway/users/profile/10918",
+					"protocol": "https",
+					"host": [
+						"test-stand",
+						"gb",
+						"ru"
+					],
+					"path": [
+						"gateway",
+						"users",
+						"profile",
+						"10918"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Editing user feed - birthDate",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "X-Auth-Token",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "image",
+							"type": "file",
+							"src": "/C:/Users/Яхина Н А/Downloads/Снимок экрана 2023-04-12 143544.jpg"
+						},
+						{
+							"key": "firstName",
+							"value": "Vano",
+							"type": "text"
+						},
+						{
+							"key": "lastName",
+							"value": "Ivano",
+							"type": "text"
+						},
+						{
+							"key": "username",
+							"value": "VanoIvano",
+							"type": "text"
+						},
+						{
+							"key": "phone",
+							"value": "89042140911",
+							"type": "text"
+						},
+						{
+							"key": "sex",
+							"value": "male",
+							"type": "text"
+						},
+						{
+							"key": "birthDate",
+							"value": "1993-04-22",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://test-stand.gb.ru/gateway/users/profile/10918",
+					"protocol": "https",
+					"host": [
+						"test-stand",
+						"gb",
+						"ru"
+					],
+					"path": [
+						"gateway",
+						"users",
+						"profile",
+						"10918"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create post (создание поста для теста)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "X-Auth-Token",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "image",
+							"type": "file",
+							"src": "/R:/Сисадмины/Яхина Н А/ДОПОЛНИТЕЛЬНО/Я/СОР/seagull-3341189_960_720.jpg"
+						},
+						{
+							"key": "title",
+							"value": "PostTest",
+							"type": "text"
+						},
+						{
+							"key": "description",
+							"value": "Создам потом удалю",
+							"type": "text"
+						},
+						{
+							"key": "content",
+							"value": "Но сначала отредактирую",
+							"type": "text"
+						},
+						{
+							"key": "isDraft",
+							"value": "0",
+							"type": "text"
+						},
+						{
+							"key": "delayPublishTo",
+							"value": "",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://test-stand.gb.ru/gateway/posts",
+					"protocol": "https",
+					"host": [
+						"test-stand",
+						"gb",
+						"ru"
+					],
+					"path": [
+						"gateway",
+						"posts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post editing (редактирование поста)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "X-Auth-Token",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "image",
+							"type": "file",
+							"src": "/R:/Сисадмины/Яхина Н А/ДОПОЛНИТЕЛЬНО/Я/СОР/seagull-3341189_960_720.jpg"
+						},
+						{
+							"key": "title",
+							"value": "Интересно поменяется ли",
+							"type": "text"
+						},
+						{
+							"key": "description",
+							"value": "Создам потом удалю",
+							"type": "text"
+						},
+						{
+							"key": "content",
+							"value": "Но сначала отредактирую",
+							"type": "text"
+						},
+						{
+							"key": "isDraft",
+							"value": "0",
+							"type": "text"
+						},
+						{
+							"key": "delayPublishTo",
+							"value": "",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://test-stand.gb.ru/gateway/posts/32359",
+					"protocol": "https",
+					"host": [
+						"test-stand",
+						"gb",
+						"ru"
+					],
+					"path": [
+						"gateway",
+						"posts",
+						"32359"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post delete (удаление поста)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "X-Auth-Token",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "image",
+							"type": "file",
+							"src": "/R:/Сисадмины/Яхина Н А/ДОПОЛНИТЕЛЬНО/Я/СОР/seagull-3341189_960_720.jpg"
+						},
+						{
+							"key": "title",
+							"value": "Интересно поменяется ли",
+							"type": "text"
+						},
+						{
+							"key": "description",
+							"value": "Создам потом удалю",
+							"type": "text"
+						},
+						{
+							"key": "content",
+							"value": "Но сначала отредактирую",
+							"type": "text"
+						},
+						{
+							"key": "isDraft",
+							"value": "0",
+							"type": "text"
+						},
+						{
+							"key": "delayPublishTo",
+							"value": "",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://test-stand.gb.ru/gateway/posts/32359",
+					"protocol": "https",
+					"host": [
+						"test-stand",
+						"gb",
+						"ru"
+					],
+					"path": [
+						"gateway",
+						"posts",
+						"32359"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post search (поиск поста по id)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-Auth-Token",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "image",
+							"type": "file",
+							"src": [],
+							"disabled": true
+						},
+						{
+							"key": "title",
+							"value": "Создам потом удалю",
+							"type": "text"
+						},
+						{
+							"key": "description",
+							"value": "Создам потом удалю",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "content",
+							"value": "Но сначала отредактирую",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "isDraft",
+							"value": "0",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "delayPublishTo",
+							"value": "",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "https://test-stand.gb.ru/api/posts/30088",
+					"protocol": "https",
+					"host": [
+						"test-stand",
+						"gb",
+						"ru"
+					],
+					"path": [
+						"api",
+						"posts",
+						"30088"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "token",
+			"value": ""
+		}
+	]
+}
